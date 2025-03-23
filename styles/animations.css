@@ -9,3 +9,105 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+
+@keyframes scaling {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.25;
+  }
+}
+
+@keyframes sparkling {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sparks {
+  opacity: 0;
+}
+
+/* ----------------------наведение--------------------- */
+
+.like-icon:hover .core {
+  fill: var(--contour-color);
+  transition: fill 0.3s;
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s 0.03s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color);
+  transition: fill 0.3s 0.05s;
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s;
+}
+
+/* -------------------активно------------------------------ */
+
+.like-icon:active .core {
+  fill: var(--heart-color);
+  transition: fill 0.3s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--heart-color);
+  transition: fill 0.3s;
+}
+
+.like-icon:active .main-body {
+  fill: var(--heart-color);
+  transition: fill 0.3s 0.05s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--heart-color);
+  transition: fill 0.3s 0.05s;
+}
+
+/* -----------------анимация----------------------------- */
+
+.like-icon.is-liked .contour {
+  fill: var(--heart-color);
+  transition: fill 0.3s 0.06s;
+}
+
+.like-icon.is-liked .heart {
+  transform-origin: center;
+  animation: scaling 0.3s 0.1s ease-in;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparkling 0.3s 0.3s ease-in;
+}
+
+.contour {
+  transition: fill 0.1s linear;
+}
+
+button:has(span)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+button:has(span):hover::before {
+  transform: scaleX(1);
+}
