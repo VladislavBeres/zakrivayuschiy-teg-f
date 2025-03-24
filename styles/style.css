@@ -227,7 +227,6 @@ button:hover {
 
 .dialog[open] {
   display: block;
-  opacity: 0.55;
 }
 
 .dialog::backdrop {
